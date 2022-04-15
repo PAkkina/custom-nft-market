@@ -5,7 +5,7 @@ module.exports = defineConfig({
     index: {
       entry: "client/src/main.js",
       template: "client/public/index.html",
-      title: "Visual Search",
+      title: "Pottery Barn NFT Marketplace",
     },
   },
 });
