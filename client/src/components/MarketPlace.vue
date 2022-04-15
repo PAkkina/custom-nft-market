@@ -53,54 +53,20 @@
 
             <v-btn> Fixed Price </v-btn>
           </v-btn-toggle>
-          <div class="d-flex flex-row">
-            <v-card :loading="loading" class="mx-auto my-12" max-width="350">
-
-              <v-img
-                rounded
-                height="300"
-                src="https://lh3.googleusercontent.com/Fc9MM6INy2LvI_9kgvD_I03EXk_jo2sdcZn4EpX5PsmYCMm3QQYs7rlkt_Yim5CDMf_n0C_cFAmyDeCEB59w_yf_59kcucB0sAAJTZM=w600"
-              ></v-img>
-              <div class="d-flex flex-row mt-3 ml-3">
-                <v-avatar size="56">
-                  <img
-                    alt="user"
-                    src="https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg"
-                  />
-                </v-avatar>
-                <div class="d-flex flex-column">
-                  <div class="ml-3 pa-0 text-lg-h6">Metaverse</div>
-                  <div class="ml-3 pa-0 text-md-body-2">Created By:</div>
-                </div>
-              </div>
-
-              <v-card-text>
-                <div class="d-flex flex-row">
-                  <v-spacer></v-spacer>
-                  <div>/100</div>
-                  <v-spacer></v-spacer>
-                  <div>ETH</div>
-                </div>
-              </v-card-text>
-
-              <v-divider class="mx-4"></v-divider>
-
-              <v-card-actions>
-                <v-btn height="60" dark @click="reserve">
-                  <v-icon>mdi-alarm-check</v-icon>12d 13h 56m
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn height="60" dark @click="reserve">
-                  <v-icon>mdi-crown</v-icon>Place Bid
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </div>
         </div>
+
         <v-spacer></v-spacer>
         <div class="d-flex flex-row mx-15 text-gallery-header-section-r">
           Explore All
         </div>
+      </div>
+      <div class="d-flex flex-row mx-15" style="overflow-x: scroll">
+        <NFTCard
+          class="mr-5"
+          v-for="(nft, index) in nfts"
+          :key="index"
+          :nftData="nft"
+        />
       </div>
     </v-main>
   </v-app>
@@ -120,15 +86,21 @@
   font-weight: bold;
 }
 .text-gallery-header-section-r {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
 }
 </style>
 
 <script>
+import NFTCard from "./NFTCard.vue";
+import { sampleNFTJson } from "../sample-data/sample-nfts";
 export default {
   name: "MarketPlace",
+  components: {
+    NFTCard,
+  },
   data: () => ({
+    nfts: sampleNFTJson,
     links: ["About", "Collections", "Fan Drop", "NFT Hunt"],
   }),
 };
